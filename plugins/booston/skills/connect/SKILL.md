@@ -2,7 +2,7 @@
 name: connect
 description: 부스트온 AI 빌더스 멤버 앱과 이 컴퓨터를 연결한다. 사용자가 부스트온 연결 코드(bo_로 시작)를 붙여 넣거나, "부스트온 연결", "연결 코드 등록"이라고 할 때 쓴다.
 argument-hint: "[연결 코드]"
-allowed-tools: Bash(mkdir -p ~/.booston*), Bash(chmod *), Bash(curl *), Bash(cat ~/.booston/*), Bash(test -f ~/.booston/*)
+allowed-tools: Bash(mkdir -p ~/.booston*), Bash(chmod *), Bash(curl *), Bash(cat ~/.booston/*), Bash(test -f ~/.booston/*), Bash(printf off > ~/.booston/auto), Bash(rm -f ~/.booston/auto)
 ---
 
 # 부스트온 연결
@@ -26,7 +26,13 @@ allowed-tools: Bash(mkdir -p ~/.booston*), Bash(chmod *), Bash(curl *), Bash(cat
    ```
    - 성공하면 `member`의 이름·회사·기수로 "○○ 대표님(회사, N기)으로 연결됐습니다"라고 알린다. 우리 회사 ERP가 아직 없으면(`erp`가 null) `/booston:erp`로 등록할 수 있다고 알려 준다.
    - 401이면 코드가 폐기됐거나 잘못 붙여 넣은 것이다. 앱에서 새 코드를 만들어 달라고 한다.
-4. 다 되면 쓰는 법을 한 줄로 알려 준다: 작업하다 "부스트온에 기록해줘" 또는 `/booston:record`.
+4. 다 되면 두 가지를 알려 준다.
+   - 작업을 마치고 Claude Code를 닫으면 오늘 대화가 **자동으로 초안**으로 정리돼 앱에 쌓인다. 초안은 대표만 보고, 앱에서 '공개'를 눌러야 다른 대표에게 보인다. 매출·금액·숫자·실명·연락처는 지우고 저장한다.
+   - 바로 올리고 싶으면 "부스트온에 기록해줘" 또는 `/booston:record`.
+
+## 자동 초안 끄기·켜기
+
+대표가 "자동 초안 꺼줘"라고 하면 `printf off > ~/.booston/auto`, "다시 켜줘"라고 하면 `rm -f ~/.booston/auto`. 마지막 자동 초안 결과는 `~/.booston/last-auto.json`에서 볼 수 있다.
 
 ## Windows에서 Bash가 없을 때
 

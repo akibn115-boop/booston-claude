@@ -1,6 +1,6 @@
 {
   "name": "booston",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "ERP를 만들다 막히고 풀어 간 과정을 해결 기록으로 정리해 부스트온 멤버 앱에 올립니다. 우리 회사 ERP 진척도 함께 올립니다.",
   "author": { "name": "부스트온 AI 빌더스" },
   "homepage": "https://booston-ai-builders.vercel.app/connect"
