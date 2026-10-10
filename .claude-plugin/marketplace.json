@@ -1,0 +1,12 @@
+{
+  "name": "booston",
+  "description": "부스트온 AI 빌더스 멤버용 Claude Code 플러그인",
+  "owner": { "name": "부스트온 AI 빌더스" },
+  "plugins": [
+    {
+      "name": "booston",
+      "source": "./plugins/booston",
+      "description": "ERP를 만들다 막히고 풀어 간 과정을 해결 기록으로 정리해 부스트온 멤버 앱에 올립니다."
+    }
+  ]
+}
