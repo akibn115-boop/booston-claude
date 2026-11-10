@@ -35,6 +35,8 @@ GitHub·Vercel·Supabase를 쓰는 프로젝트에 같은 회사 개발자를 �
 ## 합류 (동료 쪽)
 
 1. `gh auth status`, `vercel whoami`, `supabase --version` 확인. 로그인 안 돼 있으면 사용자가 직접 `! gh auth login`, `! vercel login`, `! supabase login` 하도록 안내.
+   - **대기 중인 GitHub 초대 한 번에 수락**: `gh api user/repository_invitations --jq '.[] | "\(.id) \(.repository.full_name)"'`로 목록을 보여주고, 사용자가 "응" 하면 각각 `gh api -X PATCH user/repository_invitations/<id>`로 수락한다.
+   - 저장소를 **이름만** 말했으면(예: "labseal") `gh api user/repos --paginate --jq '.[].full_name' | grep -i <이름>`으로 주소를 찾는다. 여러 개면 고르게 한다. 이름도 없으면 목록을 보여주고 고르게 한다.
 2. `git clone <저장소>` 후 폴더로 이동. **CLAUDE.md의 기본 브랜치로 `git switch <브랜치>`** (clone은 main을 받는데 작업 브랜치가 develop인 프로젝트가 있다). 패키지 설치(lock 파일 보고 npm/pnpm/bun 결정).
 3. Vercel 프로젝트면 `vercel link --yes --project <프로젝트> --scope <팀 id>` (팀 id는 CLAUDE.md. `--scope` 없으면 멈춘다).
    **`vercel link`는 Development 환경변수를 `.env.local`로 자동으로 내려받는다(끄는 옵션 없음).** 그래서:
